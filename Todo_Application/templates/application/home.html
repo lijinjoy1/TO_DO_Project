@@ -1,0 +1,21 @@
+<h1 style="color: darkslategrey; text-align: center">
+To_Do_Project:</h1>
+
+<form method="POST" action="">
+    {% csrf_token %}
+    <label>Enter your task: </label>
+    {{ forms.title}}
+    <input type="submit" name="create title">
+</form>
+
+{% for i in Task %}
+<a href="{% url 'update_task' i.id %}">Update</a>
+<ul>
+    
+    <li>{{i.title}}</li>
+    <li>{{i.complete}}</li>
+    <li>{{i.created}}</li>            
+
+</ul>
+
+{%  endfor %}
