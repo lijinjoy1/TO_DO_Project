@@ -2,7 +2,8 @@
 
 <form  method='POST' action="">
     {% csrf_token %}
-    <h1>welcome</h1>
+    
+    {{ form }}
     <input type="submit" name="update_task">
 
 </form>

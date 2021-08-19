@@ -22,4 +22,26 @@ def homepage(request):
 
 def updatepage(request, pk):
     task=Tasks.objects.get(id=pk)
-    return render(request,'application/update.html')
+    form= TasksForm(instance=task)
+    if (request.method == 'POST'):
+        form= TasksForm(request.POST,instance=task)
+        if form.is_valid():
+            form.save()
+        return redirect('/home')
+
+    context={
+        'form':form
+    }
+    return render(request,'application/update.html',context)
+
+
+def deletepage(request, pk):
+    item=Tasks.objects.get(id=pk)
+    if (request.method == 'POST'):
+        item.delete()
+        return redirect('/home')
+
+    context={
+        'item':item,
+    }
+    return render(request,'application/delete.html',context)

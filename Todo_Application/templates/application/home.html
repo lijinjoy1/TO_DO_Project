@@ -10,6 +10,7 @@ To_Do_Project:</h1>
 
 {% for i in Task %}
 <a href="{% url 'update_task' i.id %}">Update</a>
+<a href="{% url 'delete_task' i.id %}">Delete</a>
 <ul>
     
     <li>{{i.title}}</li>
